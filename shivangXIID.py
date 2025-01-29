@@ -3,12 +3,39 @@ import sys
 import os
 import datetime
 
-sql_host=''
-sql_user=''
+sql_host='localhost'
+sql_user='root'
 sql_password=''
-sql_database=''
+sql_database='test'
 
+'''
+CREATE TABLE books (
+    bookid INT PRIMARY KEY AUTO_INCREMENT,
+    bname VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    publisher VARCHAR(255) NOT NULL,
+    btype VARCHAR(100) NOT NULL,
+    pubyear INT,
+    nop INT CHECK (nop > 0),
+    noc INT CHECK (noc > 0)
+);
 
+CREATE TABLE member (
+    memberid INT PRIMARY KEY AUTO_INCREMENT,
+    mname VARCHAR(255) NOT NULL,
+    address TEXT NOT NULL,
+    mobileno VARCHAR(15) UNIQUE NOT NULL
+);
+
+CREATE TABLE trans (
+    transid INT PRIMARY KEY AUTO_INCREMENT,
+    memberid INT NOT NULL,
+    bookid INT NOT NULL,
+    bookstatus ENUM('ISSUED', 'RETURNED', 'LOST') NOT NULL,
+    dateiss DATE NOT NULL,
+    dateret DATE NOT NULL
+);
+'''
 # code for adding book **********
 def addBook():
    mycursor=conn.cursor()
